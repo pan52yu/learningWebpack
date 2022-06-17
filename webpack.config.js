@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
     mode: 'production',
@@ -14,6 +15,7 @@ module.exports = {
             template: './public/index.html',
             filename: 'index.html',
         }),
+        new VueLoaderPlugin(),
     ],
     devServer: {
         port: 9000,
@@ -34,8 +36,11 @@ module.exports = {
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
-                        maxSize: 21 * 1024,
+                        maxSize: 8 * 1024,
                     },
+                },
+                generator: {
+                    filename: 'images/[hash:6][ext]',
                 },
             },
             {
@@ -54,6 +59,10 @@ module.exports = {
                         presets: ['@babel/preset-env'],
                     },
                 },
+            },
+            {
+                test: /\.vue$/i,
+                loader: 'vue-loader',
             },
         ],
     },
