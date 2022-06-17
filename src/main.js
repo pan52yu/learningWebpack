@@ -20,3 +20,8 @@ document.body.appendChild(gif)
 document.body.appendChild(png)
 
 import './assets/fonts/iconfont.css'
+
+const jt = () => {
+    console.log('测试处理高版本js语法功能！')
+}
+console.log(jt)

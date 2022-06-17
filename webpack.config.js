@@ -22,11 +22,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.less$/,
+                test: /\.less$/i,
                 use: ['style-loader', 'css-loader', 'less-loader'],
             },
             {
@@ -34,10 +34,20 @@ module.exports = {
                 type: 'asset',
             },
             {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
                 generator: {
                     filename: 'fonts/[name].[hash:6].[ext]',
+                },
+            },
+            {
+                test: /\.js$/i,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                    },
                 },
             },
         ],
