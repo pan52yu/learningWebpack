@@ -3,3 +3,5 @@ import { tab } from './tab.js'
 
 marquee()
 tab()
+
+import './styles/index.css'
